@@ -6,14 +6,14 @@
 FROM quay.io/centos/centos:centos8
 MAINTAINER JB <john@globaldyne.co.uk>
 
-ARG git_repo=master
+ARG PHP_VER=7.4
 
 RUN dnf -y install epel-release
 RUN dnf -y install https://rpms.remirepo.net/enterprise/remi-release-8.rpm
 
 RUN  dnf -y update 
 
-RUN dnf -y module enable php:remi-8.0
+RUN dnf -y module enable php:remi-${PHP_VER}
 RUN dnf --setopt=tsflags=nodocs -y install \
 	php \
 	php-cli \
